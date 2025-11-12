@@ -1,0 +1,9 @@
+[build]
+# Pin npm to avoid the "Exit handler never called!" crash you hit earlier,
+# install dev deps, verify astro exists, then build.
+command = "npm i -g npm@10.8.2 && npm ci --no-audit --no-fund && npx astro --version && npm run build"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "22.21.1"
+NPM_CONFIG_PRODUCTION = "false"   # <- ensures devDependencies (Astro) are installed
